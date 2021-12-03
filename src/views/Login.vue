@@ -7,13 +7,23 @@
 <style></style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
     return {
       message: "Welcome to Vue.js!",
+      newSessionParams: {},
+      errors: [],
     };
   },
-  created: function () {},
-  methods: {},
+  created: function () {
+    this.submit();
+  },
+  methods: {
+    submit: function () {
+      console.log("in submit");
+    },
+  },
 };
 </script>
