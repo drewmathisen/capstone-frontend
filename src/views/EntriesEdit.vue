@@ -1,5 +1,5 @@
 <template>
-  <div class="entriesIndex">
+  <div class="entriesEdit">
     <div v-for="entry in entries">
       <p><h1>{{ entry.title }}</h1></p>
       <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>

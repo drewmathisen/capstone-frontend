@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import Entries from "../views/EntriesIndex.vue";
 import EntriesShow from "../views/EntriesShow.vue";
+import EntriesEdit from "../views/EntriesEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/entries/:id",
     name: "EntriesShow",
     component: EntriesShow,
+  },
+  {
+    path: "/entries/:id/edit",
+    name: "EntriesEdit",
+    component: EntriesEdit,
   },
 ];
 
