@@ -6,6 +6,7 @@
       <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
       <p>{{ entry.notes }}</p>
       <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
+      <hr>
     </div>
   </div>
 </template>

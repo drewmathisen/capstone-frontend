@@ -8,6 +8,8 @@
       <router-link to="/signup">Signup</router-link>
       |
       <router-link to="/entries">Entries</router-link>
+      |
+      <router-link to="/entries/new">New Entry</router-link>
     </div>
     <router-view />
   </div>
