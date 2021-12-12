@@ -41,8 +41,12 @@ export default {
       });
     },
     destroyEntry: function() {
-      console.log("in destroy");
-    }
-  },
+      console.log("in destroy")
+      axios.delete(`/entries/${this.$route.params.id}`).then(response => {
+        console.log(response.data);
+        this.$router.push('/entries')
+    })
+   }
+  }
 };
 </script>
