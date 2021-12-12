@@ -6,6 +6,7 @@ import Signup from "../views/Signup.vue";
 import Entries from "../views/EntriesIndex.vue";
 import EntriesShow from "../views/EntriesShow.vue";
 import EntriesEdit from "../views/EntriesEdit.vue";
+import EntriesNew from "../views/EntriesNew.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/entries",
     name: "Entries",
     component: Entries,
+  },
+  {
+    path: "/entries/new",
+    name: "EntriesNew",
+    component: EntriesNew,
   },
   {
     path: "/entries/:id",
