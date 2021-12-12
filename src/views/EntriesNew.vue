@@ -1,7 +1,7 @@
 <template>
   <div class="entries-new">
     <form v-on:submit.prevent="submit()">
-      <h1>Post create</h1>
+      <h1>New Entry</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
@@ -9,6 +9,14 @@
         <label>Title:</label>
         <input type="text" v-model="newEntryParams.title" />
       </div>
+
+      <form v-on:submit.prevent="obSubmit()">
+        <label>Observed Body:</label>
+        <input type="text" v-model="newBody.name" />
+        <input type="submit" value="add" />
+        <div v-for="body in newEntryParams.observed_bodies">{{ body.name }}</div>
+      </form>
+
       <div>
         <label>Date:</label>
         <input type="text" v-model="newEntryParams.date" />
@@ -75,6 +83,10 @@ export default {
         seeing_conditions: "",
         filters: "",
         date: "",
+        observed_bodies: [],
+      },
+      newBody: {
+        name: "",
       },
       errors: [],
     };
@@ -86,6 +98,19 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.$router.push("/entries");
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    obSubmit: function () {
+      axios
+        .post("/observed_bodies", this.newBody)
+        .then((response) => {
+          console.log(response.data);
+          // this.observedBodies = response.data;
+          this.newEntryParams.observed_bodies.push(response.data);
+          console.log(this.newEntryParams.observed_bodies);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

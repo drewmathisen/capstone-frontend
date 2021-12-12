@@ -2,6 +2,7 @@
   <div class="entriesIndex">
     <div v-for="entry in entries">
       <p><h1>{{ entry.title }}</h1></p>
+      <p><h3>Observed Bodies: </h3></p>
       <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
       <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
       <p>{{ entry.notes }}</p>
