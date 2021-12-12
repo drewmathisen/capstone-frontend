@@ -7,6 +7,7 @@ import Entries from "../views/EntriesIndex.vue";
 import EntriesShow from "../views/EntriesShow.vue";
 import EntriesEdit from "../views/EntriesEdit.vue";
 import EntriesNew from "../views/EntriesNew.vue";
+import Logout from "../views/Logout.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/entries/:id/edit",
     name: "EntriesEdit",
     component: EntriesEdit,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
   },
 ];
 
