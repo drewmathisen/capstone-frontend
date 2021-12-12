@@ -7,7 +7,7 @@
       <p>Declination: {{ entry.declination }} | Right Ascention: {{entry.right_ascention }}</p>
       <p>Telecscope Type: {{ entry.telescope_type }} | Magnification: {{ entry.magnification }} |Filter: {{entry.filter }}</p>
       <p>{{ entry.notes }}</p>
-      <!-- <p><router-link v-bind:to="`/entries/${entry.id}/edit`">Edit Entry</router-link></p> -->
+      <p><router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link></p>
       <button v-on:click="destroyEntry()">Delete Entry</button>
 
 
