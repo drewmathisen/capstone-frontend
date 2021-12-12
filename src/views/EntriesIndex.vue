@@ -5,8 +5,7 @@
       <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
       <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
       <p>{{ entry.notes }}</p>
-      <button>More Info!</button>
-      <router-link v-bind:to="`/entries/${entry.id}`"></router-link>
+      <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
     </div>
   </div>
 </template>
