@@ -2,6 +2,9 @@
   <div class="entriesIndex">
 
       <p><h1>{{ entry.title }}</h1></p>
+      <div v-for="ob in observed_bodies">
+        <p>{{ ob.name }}</p>
+      </div>
       <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
       <p>{{ entry.location }} | {{entry.date }} </p>
       <p>Declination: {{ entry.declination }} | Right Ascention: {{entry.right_ascention }}</p>
@@ -25,10 +28,12 @@ export default {
     return {
       message: "All Entries!",
       entry: [],
+      observed_bodies: {}
     };
   },
   created: function () {
     this.entriesIndex();
+    this.observedBodies();
   },
   methods: {
     entriesIndex: function () {
@@ -45,8 +50,17 @@ export default {
       axios.delete(`/entries/${this.$route.params.id}`).then(response => {
         console.log(response.data);
         this.$router.push('/entries')
-    })
-   }
+    });
+   },
+    observedBodies: function() {
+      console.log("in observed_bodies");
+      axios.get("/observed_bodies/" + this.$route.params.id).then((response) => {
+        // axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+        // localStorage.setItem("jwt", response.data.jwt);
+        console.log(response.data);
+        this.observed_bodies = response.data;
+      });
+    }
   }
 };
 </script>
