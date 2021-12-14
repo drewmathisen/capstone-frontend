@@ -3,7 +3,7 @@
 
       <p><h1>{{ entry.title }}</h1></p>
       <div v-for="ob in observed_bodies">
-        <p>{{ ob.name }}</p>
+        <h3>{{ ob.name }}</h3>
       </div>
       <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
       <p>{{ entry.location }} | {{entry.date }} </p>
