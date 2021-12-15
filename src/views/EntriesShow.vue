@@ -1,20 +1,20 @@
 <template>
   <div class="entriesIndex">
-
-      <p><h1>{{ entry.title }}</h1></p>
-      <div v-for="ob in observed_bodies">
-        <h3>{{ ob.name }}</h3>
-      </div>
-      <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
-      <p>{{ entry.location }} | {{entry.date }} </p>
-      <p>Declination: {{ entry.declination }} | Right Ascention: {{entry.right_ascention }}</p>
-      <p>Telecscope Type: {{ entry.telescope_type }} | Magnification: {{ entry.magnification }} |Filter: {{entry.filter }}</p>
-      <p>{{ entry.notes }}</p>
-      <p><router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link></p>
-      <button v-on:click="destroyEntry()">Delete Entry</button>
-
-
-
+    <div id="main">
+      <section id="content" class="main">
+        <p><h2>{{ entry.title }}</h2></p>
+        <div v-for="ob in observed_bodies">
+          <h3>{{ ob.name }}</h3>
+        </div>
+        <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
+        <p>{{ entry.location }} | {{entry.date }} </p>
+        <p>Declination: {{ entry.declination }} | Right Ascention: {{entry.right_ascention }}</p>
+        <p>Telecscope Type: {{ entry.telescope_type }} | Magnification: {{ entry.magnification }} |Filter: {{entry.filter }}</p>
+        <p>{{ entry.notes }}</p>
+        <p><router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link></p>
+        <button v-on:click="destroyEntry()">Delete Entry</button>
+      </section>
+    </div>
   </div>
 </template>
 

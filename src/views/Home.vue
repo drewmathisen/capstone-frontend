@@ -1,4 +1,5 @@
 <template>
+  
   <div id="home">
     <!-- Introduction -->
     <section id="intro" class="main">
@@ -22,10 +23,7 @@
                 <hr>
               </div>
           </p>
-
-          <ul class="actions">
-            <li><a href="generic.html" class="button">Learn More</a></li>
-          </ul>
+          
         </div>
         <span class="image"><img src="images/pic01.jpg" alt="" /></span>
       </div>
