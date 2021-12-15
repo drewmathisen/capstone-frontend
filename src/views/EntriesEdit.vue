@@ -9,6 +9,14 @@
         <label>Title:</label>
         <input type="text" v-model="editEntryParams.title" />
       </div>
+
+      <!-- <form v-on:submit.prevent="obSubmit()">
+        <label>Observed Body:</label>
+        <input type="text" v-model="newBody.name" />
+        <input type="submit" value="add" />
+        <div v-for="body in editEntryParams.observed_bodies">{{ body.name }}</div>
+      </form> -->
+
       <div>
         <label>Date:</label>
         <input type="text" v-model="editEntryParams.date" />
@@ -68,8 +76,26 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      editEntryParams: {},
+      editEntryParams: {
+        user_id: "",
+        title: "",
+        notes: "",
+        telescope_type: "",
+        start_time: "",
+        end_time: "",
+        location: "",
+        declination: "",
+        right_ascention: "",
+        magnification: "",
+        seeing_conditions: "",
+        filters: "",
+        date: "",
+        observed_bodies: [],
+      },
       errors: [],
+      newBody: {
+        name: "",
+      },
     };
   },
   methods: {
@@ -89,6 +115,19 @@ export default {
         console.log(response.data);
         this.editEntryParams = response.data;
       });
+    },
+    obSubmit: function () {
+      axios
+        .post("/observed_bodies", this.newBody)
+        .then((response) => {
+          console.log(response.data);
+          // this.observedBodies = response.data;
+          this.editEntryParams.observed_bodies.push(response.data);
+          console.log(this.editEntryParams.observed_bodies);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
   },
   created: function () {
