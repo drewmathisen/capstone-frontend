@@ -1,6 +1,6 @@
 <template>
   <div class="entriesIndex">
-    <div id="main">
+    <!-- <div id="main"> -->
       <section id="content" class="main">
         <p><h2>{{ entry.title }}</h2></p>
         <div v-for="ob in observed_bodies">
@@ -14,7 +14,7 @@
         <p><router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link></p>
         <button v-on:click="destroyEntry()">Delete Entry</button>
       </section>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 

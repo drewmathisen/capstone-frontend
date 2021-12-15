@@ -16,7 +16,7 @@
           <router-link class="button" to="/entries">Entries</router-link>
           <router-link class="button" v-if="isLoggedIn()" to="/logout">Log out</router-link>
           <router-link class="button" to="/entries/new">New Entry</router-link>
-          <router-link class="button" to="/">Search by Subject</router-link>
+          <router-link class="button" to="/observedbodies">Search by Subject</router-link>
         </ul>
       </nav>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="entries-edit">
     <form v-on:submit.prevent="submit()">
-      <h1>Entry edit</h1>
+      <h1>Edit Entry</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>

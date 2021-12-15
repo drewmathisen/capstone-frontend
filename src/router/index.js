@@ -8,6 +8,7 @@ import EntriesShow from "../views/EntriesShow.vue";
 import EntriesEdit from "../views/EntriesEdit.vue";
 import EntriesNew from "../views/EntriesNew.vue";
 import Logout from "../views/Logout.vue";
+import ObservedBodies from "../views/ObservedBodies.vue";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
     path: "/logout",
     name: "Logout",
     component: Logout,
+  },
+  {
+    path: "/observedbodies",
+    name: "ObservedBodies",
+    component: ObservedBodies,
   },
 ];
 
