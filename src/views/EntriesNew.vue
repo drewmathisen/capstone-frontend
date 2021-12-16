@@ -1,7 +1,9 @@
 <template>
   <div class="entries-new">
     <form v-on:submit.prevent="submit()">
-      <h1>New Entry</h1>
+      <div class="spotlight">
+        <h1>New Entry</h1>
+      </div>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
@@ -9,54 +11,64 @@
         <label>Title:</label>
         <input type="text" v-model="newEntryParams.title" />
       </div>
+      <br />
 
       <form v-on:submit.prevent="obSubmit()">
         <label>Observed Body:</label>
         <input type="text" v-model="newBody.name" />
+        <br />
         <input type="submit" value="add" />
         <div v-for="body in newEntryParams.observed_bodies">{{ body.name }}</div>
       </form>
-
+      <br />
       <div>
         <label>Date:</label>
         <input type="text" v-model="newEntryParams.date" />
+        <br />
         <label>Location:</label>
         <input type="text" v-model="newEntryParams.location" />
       </div>
+      <br />
       <div>
         <label>Start Time:</label>
         <input type="text" v-model="newEntryParams.start_time" />
+        <br />
         <label>End Time:</label>
         <input type="text" v-model="newEntryParams.end_time" />
       </div>
+      <br />
       <div>
         <label>Seeing Conditions:</label>
         <input type="text" v-model="newEntryParams.seeing_conditions" />
       </div>
+      <br />
       <div>
         <label>Telescope:</label>
         <input type="text" v-model="newEntryParams.telescope_type" />
       </div>
+      <br />
       <div>
         <label>Filters:</label>
         <input type="text" v-model="newEntryParams.filters" />
+        <br />
         <label>Magnification:</label>
         <input type="text" v-model="newEntryParams.magnification" />
       </div>
-      <div>
-        <label>Observed Body:</label>
-      </div>
+      <br />
       <div>
         <!-- <input type="text" v-model="newEntryParams.telescope_type" /> -->
         <label>Right Ascention:</label>
         <input type="text" v-model="newEntryParams.right_ascention" />
+        <br />
         <label>Declination:</label>
         <input type="text" v-model="newEntryParams.declination" />
       </div>
+      <br />
       <div>
         <label>Notes:</label>
         <input type="text" v-model="newEntryParams.notes" />
       </div>
+      <br />
       <input type="submit" value="Submit" />
     </form>
   </div>

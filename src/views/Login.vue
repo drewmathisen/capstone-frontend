@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="spotlight">
     <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>
@@ -13,6 +13,7 @@
         <label>Password:</label>
         <input type="password" v-model="newSessionParams.password" />
       </div>
+      <hr />
       <input type="submit" value="Submit" />
     </form>
   </div>
