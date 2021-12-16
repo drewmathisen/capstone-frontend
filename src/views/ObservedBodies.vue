@@ -1,12 +1,16 @@
 <template>
   <div class="observedBodies">
+    <section id="intro" class="main">
+      <div class="spotlight">
     <p><h1> {{ message }}</h1></p>
-    <div v-for="ob in observedBodies">
-      <p><h2>{{ ob.name }}</h2></p>
-      <router-link class="button" to="/">See all entries</router-link>
-      <!-- <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link> -->
-      <hr>
-    </div>
+        <div v-for="ob in observedBodies">
+          <p><h2>{{ ob.name }}</h2></p>
+          <router-link class="button" v-bind:to="`/observedbodies/${ob.id}`">See all entries</router-link>
+          <!-- <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link> -->
+          <hr>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 

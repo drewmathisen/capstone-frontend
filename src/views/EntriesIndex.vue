@@ -1,17 +1,22 @@
 <template>
   <div class="entriesIndex">
-    <div v-for="entry in entries">
-      <p><h1>{{ entry.title }}</h1></p>
-      <div v-for="ob in entry.observed_bodies">
-        <h3>{{ ob.name }}</h3>
+    <section id="intro" class="main">
+      <div class="spotlight">
+        <div class="content">
+          <div v-for="entry in entries">
+            <p><h1>{{ entry.title }}</h1></p>
+            <div v-for="ob in entry.observed_bodies">
+              <h3>{{ ob.name }}</h3>
+            </div>
+            <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
+            <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
+            <p>{{ entry.notes }}</p>
+            <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
+            <hr>
+          </div>
+        </div>
       </div>
-      <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
-      <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
-      <p>{{ entry.notes }}</p>
-      <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
-      <hr>
-    </div>
-
+    </section>
   </div>
 </template>
 

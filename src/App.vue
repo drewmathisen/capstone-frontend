@@ -4,21 +4,25 @@
       <!-- Header -->
       <header id="header" class="alt">
         <span class="logo"><img src="images/logo.svg" alt="" /></span>
-        <h1>Stellar</h1>
+        <h1>Intrastellar</h1>
         <p>Log and share your data!</p>
       </header>
 
-      <nav class="main">
-        <ul class="main">
-          <router-link class="button" to="/">Home</router-link>
-          <router-link class="button" v-if="!isLoggedIn()" to="/login">Login</router-link>
-          <router-link class="button" v-if="!isLoggedIn()" to="/signup">Signup</router-link>
-          <router-link class="button" to="/entries">Entries</router-link>
-          <router-link class="button" v-if="isLoggedIn()" to="/logout">Log out</router-link>
-          <router-link class="button" to="/entries/new">New Entry</router-link>
-          <router-link class="button" to="/observedbodies">Search by Subject</router-link>
-        </ul>
-      </nav>
+      <section id="intro" class="main">
+        <div class="spotlight">
+          <nav class="main">
+            <ul class="main">
+              <router-link class="button" to="/">Home</router-link>
+              <router-link class="button" v-if="!isLoggedIn()" to="/login">Login</router-link>
+              <router-link class="button" v-if="!isLoggedIn()" to="/signup">Signup</router-link>
+              <router-link class="button" to="/entries">Entries</router-link>
+              <router-link class="button" v-if="isLoggedIn()" to="/logout">Log out</router-link>
+              <router-link class="button" to="/entries/new">New Entry</router-link>
+              <router-link class="button" to="/observedbodies">Search by Subject</router-link>
+            </ul>
+          </nav>
+        </div>
+      </section>
 
       <!-- Nav -->
       <!-- <nav id="nav">
