@@ -9,7 +9,7 @@
         <hr />
         <router-link v-bind:to="`/entries/${image.entry_id}`" tag="button">Back</router-link>
         <!-- <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link> -->
-        <button v-on:click="destroyEntry()">Delete Entry</button>
+        <button v-on:click="destroyImage()">Delete Image</button>
       </section>
     </header>
     <!-- </div> -->
@@ -41,11 +41,11 @@ export default {
         this.image = response.data;
       });
     },
-    destroyEntry: function () {
+    destroyImage: function () {
       console.log("in destroy");
-      axios.delete(`/entries/${this.$route.params.id}`).then((response) => {
+      axios.delete(`/images/${this.$route.params.id}`).then((response) => {
         console.log(response.data);
-        this.$router.push("/entries");
+        this.$router.push("/entries/" + this.$route.params.id);
       });
     },
   },
