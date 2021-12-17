@@ -1,13 +1,21 @@
 <template>
   <div class="entries-edit">
     <form v-on:submit.prevent="submit()">
-      <h1>Edit Images</h1>
+      <h1>Edit Image</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <div>
-        <label>Title:</label>
-        <input type="text" v-model="editEntryParams.title" />
+        <label>Name:</label>
+        <input type="text" v-model="editImageParams.name" />
+      </div>
+      <div>
+        <label>Description:</label>
+        <input type="text" v-model="editImageParams.description" />
+      </div>
+      <div>
+        <label>Image Url:</label>
+        <input type="text" v-model="editImageParams.image_url" />
       </div>
       <input type="submit" value="Submit" />
     </form>
@@ -19,63 +27,35 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      editEntryParams: {
-        user_id: "",
-        title: "",
-        notes: "",
-        telescope_type: "",
-        start_time: "",
-        end_time: "",
-        location: "",
-        declination: "",
-        right_ascention: "",
-        magnification: "",
-        seeing_conditions: "",
-        filters: "",
-        date: "",
-        observed_bodies: [],
-        images: [],
+      editImageParams: {
+        name: "",
+        description: "",
+        image_url: "",
       },
       errors: [],
-      newBody: {
-        name: "",
-      },
     };
   },
   methods: {
     submit: function () {
       axios
-        .patch("/entries/" + this.$route.params.id, this.editEntryParams)
+        .patch("/images/" + this.$route.params.id, this.editImageParams)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/entries/" + this.$route.params.id);
+          this.$router.push("/images/" + this.$route.params.id);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
     },
-    getEntry: function () {
-      axios.get("/entries/" + this.$route.params.id).then((response) => {
+    getImage: function () {
+      axios.get("/images/" + this.$route.params.id).then((response) => {
         console.log(response.data);
-        this.editEntryParams = response.data;
+        this.editImageParams = response.data;
       });
-    },
-    obSubmit: function () {
-      axios
-        .post("/observed_bodies", this.newBody)
-        .then((response) => {
-          console.log(response.data);
-          // this.observedBodies = response.data;
-          this.editEntryParams.observed_bodies.push(response.data);
-          console.log(this.editEntryParams.observed_bodies);
-        })
-        .catch((error) => {
-          this.errors = error.response.data.errors;
-        });
     },
   },
   created: function () {
-    this.getEntry();
+    this.getImage();
   },
 };
 </script>

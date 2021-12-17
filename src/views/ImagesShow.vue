@@ -8,6 +8,7 @@
         <span class="image fit"><img v-bind:src="image.image_url" alt="image.description" /></span>
         <hr />
         <router-link v-bind:to="`/entries/${image.entry_id}`" tag="button">Back</router-link>
+        <router-link v-bind:to="`/images/${image.id}/edit`" tag="button">Edit Image</router-link>
         <!-- <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link> -->
         <button v-on:click="destroyImage()">Delete Image</button>
       </section>
