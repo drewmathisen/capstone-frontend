@@ -1,16 +1,19 @@
 <template>
-  <div class="observedBodies">
-    <section id="intro" class="main">
-      <div class="spotlight">
-    <p><h1> {{ message }}</h1></p>
+  <div class="observedBodies" id="wrapper">
+    <header id="header">
+      <h1>{{ message }}</h1>
+
+      <ul class="alt">
         <div v-for="ob in observedBodies">
-          <p><h2>{{ ob.name }}</h2></p>
-          <router-link class="button" v-bind:to="`/observedbodies/${ob.id}`">See all entries</router-link>
-          <!-- <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link> -->
-          <hr>
+          <p>
+            <li>
+              <h2>{{ ob.name }}</h2>
+              <router-link class="button" v-bind:to="`/observedbodies/${ob.id}`">See all entries</router-link>
+            </li>
+          </p>
         </div>
-      </div>
-    </section>
+      </ul>
+    </header>
   </div>
 </template>
 
@@ -22,7 +25,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "All Observed Bodies!",
+      message: "All Observed Bodies",
       observedBodies: [],
       searchTerm: "",
     };

@@ -2,26 +2,28 @@
   <div id="app">
     <div id="wrapper">
       <!-- Header -->
-      <header id="header" class="alt">
+      <header id="header">
         <span class="logo"><img src="images/logo.svg" alt="" /></span>
         <h1>Intrastellar</h1>
         <p>Log and share your data!</p>
       </header>
 
       <section id="intro" class="main">
-        <div class="spotlight">
-          <nav class="main">
-            <ul class="main">
-              <router-link class="button" to="/">Home</router-link>
-              <router-link class="button" v-if="!isLoggedIn()" to="/login">Login</router-link>
-              <router-link class="button" v-if="!isLoggedIn()" to="/signup">Signup</router-link>
-              <router-link class="button" v-if="isLoggedIn()" to="/entries">My Entries</router-link>
-              <router-link class="button" v-if="isLoggedIn()" to="/logout">Log out</router-link>
-              <router-link class="button" v-if="isLoggedIn()" to="/entries/new">New Entry</router-link>
-              <router-link class="button" to="/observedbodies">Search by Subject</router-link>
-            </ul>
-          </nav>
-        </div>
+        <header id="header">
+          <div class="spotlight">
+            <nav class="main">
+              <ul class="main">
+                <router-link class="button" to="/">Home</router-link>
+                <router-link class="button" v-if="!isLoggedIn()" to="/login">Login</router-link>
+                <router-link class="button" v-if="!isLoggedIn()" to="/signup">Signup</router-link>
+                <router-link class="button" v-if="isLoggedIn()" to="/entries">My Entries</router-link>
+                <router-link class="button" v-if="isLoggedIn()" to="/logout">Log out</router-link>
+                <router-link class="button" v-if="isLoggedIn()" to="/entries/new">New Entry</router-link>
+                <router-link class="button" to="/observedbodies">Search by Subject</router-link>
+              </ul>
+            </nav>
+          </div>
+        </header>
       </section>
 
       <!-- Nav -->

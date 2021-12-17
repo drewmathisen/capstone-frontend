@@ -1,66 +1,13 @@
 <template>
   <div class="entries-edit">
     <form v-on:submit.prevent="submit()">
-      <h1>Edit Entry</h1>
+      <h1>Edit Images</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <div>
         <label>Title:</label>
         <input type="text" v-model="editEntryParams.title" />
-      </div>
-
-      <!-- <form v-on:submit.prevent="obSubmit()">
-        <label>Observed Body:</label>
-        <input type="text" v-model="newBody.name" />
-        <input type="submit" value="add" />
-        <div v-for="body in editEntryParams.observed_bodies">{{ body.name }}</div>
-      </form> -->
-
-      <div>
-        <label>Date:</label>
-        <input type="text" v-model="editEntryParams.date" />
-        <label>Location:</label>
-        <input type="text" v-model="editEntryParams.location" />
-      </div>
-      <div>
-        <label>Start Time:</label>
-        <input type="text" v-model="editEntryParams.start_time" />
-        <label>End Time:</label>
-        <input type="text" v-model="editEntryParams.end_time" />
-      </div>
-      <div>
-        <label>Seeing Conditions:</label>
-        <input type="text" v-model="editEntryParams.seeing_conditions" />
-      </div>
-      <div>
-        <label>Telescope:</label>
-        <input type="text" v-model="editEntryParams.telescope_type" />
-      </div>
-      <div>
-        <label>Filters:</label>
-        <input type="text" v-model="editEntryParams.filters" />
-        <label>Magnification:</label>
-        <input type="text" v-model="editEntryParams.magnification" />
-      </div>
-      <div>
-        <!-- <input type="text" v-model="editEntryParams.telescope_type" /> -->
-        <label>Right Ascention:</label>
-        <input type="text" v-model="editEntryParams.right_ascention" />
-        <label>Declination:</label>
-        <input type="text" v-model="editEntryParams.declination" />
-      </div>
-      <div>
-        <label>Notes:</label>
-        <input type="text" v-model="editEntryParams.notes" />
-      </div>
-      <div>
-        <label>Title:</label>
-        <input type="text" v-model="editEntryParams.title" />
-      </div>
-      <div>
-        <label>Notes:</label>
-        <input type="text" v-model="editEntryParams.notes" />
       </div>
       <input type="submit" value="Submit" />
     </form>
@@ -87,6 +34,7 @@ export default {
         filters: "",
         date: "",
         observed_bodies: [],
+        images: [],
       },
       errors: [],
       newBody: {

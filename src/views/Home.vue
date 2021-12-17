@@ -2,12 +2,10 @@
   
   <div id="home">
     <!-- Introduction -->
+          <header id="header">
     <section id="intro" class="main">
       <div class="spotlight">
         <div class="content">
-          <header class="major">
-            <h2>All</h2>
-          </header>
 
           <p>
               <div v-for="entry in entries">
@@ -23,11 +21,12 @@
                 <hr>
               </div>
           </p>
-          
+
+
         </div>
-        <span class="image"><img src="images/pic01.jpg" alt="" /></span>
       </div>
     </section>
+          </header>
 
     <!-- First Section -->
     <!-- <section id="first" class="main special">

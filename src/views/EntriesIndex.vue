@@ -1,7 +1,7 @@
 <template>
   <div class="entriesIndex">
-    <section id="intro" class="main">
-      <div class="spotlight">
+		<header id="header">
+      <div id="wrapper">
         <div class="content">
           <div v-for="entry in entries">
             <p><h1>{{ entry.title }}</h1></p>
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </header>
   </div>
 </template>
 
