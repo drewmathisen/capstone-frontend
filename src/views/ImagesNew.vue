@@ -56,12 +56,11 @@ export default {
         .post("/images", this.newImageParams)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/entries");
+          this.$router.push("/entries/" + this.$route.params.id);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
-      console.log(this.newImageParams);
     },
   },
 };

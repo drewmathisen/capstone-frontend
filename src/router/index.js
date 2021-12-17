@@ -11,6 +11,7 @@ import Logout from "../views/Logout.vue";
 import ObservedBodies from "../views/ObservedBodies.vue";
 import OBShow from "../views/OBShow.vue";
 import ImagesNew from "../views/ImagesNew.vue";
+import ImagesShow from "../views/ImagesShow.vue";
 import ImagesEdit from "../views/ImagesEdit.vue";
 
 Vue.use(VueRouter);
@@ -65,6 +66,11 @@ const routes = [
     path: "/observedbodies/:id",
     name: "OBShow",
     component: OBShow,
+  },
+  {
+    path: "/images/:id",
+    name: "ImagesShow",
+    component: ImagesShow,
   },
   {
     path: "/images/new/:id",

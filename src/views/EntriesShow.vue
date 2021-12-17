@@ -19,7 +19,9 @@
           <div v-for="image in entry.images">
             <div class="thumb1">
               <div class="col-12">
-                <span class="image fit"><img v-bind:src="image.image_url" alt="image.description" /></span>
+                <router-link v-bind:to="`/images/${image.id}`">
+                  <span class="image fit"><img v-bind:src="image.image_url" alt="image.description" /></span>
+                </router-link>
               </div>
               <p>{{ image.name }}</p>
             </div>
