@@ -18,6 +18,9 @@
         <input type="text" v-model="editImageParams.image_url" />
       </div>
       <input type="submit" value="Submit" />
+      <header id="header">
+        <p><router-link v-bind:to="`/entries/${editImageParams.entry_id}`" tag="button">Back</router-link></p>
+      </header>
     </form>
   </div>
 </template>

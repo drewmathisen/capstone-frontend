@@ -28,9 +28,14 @@
           </div>
         </div>
         <hr />
-        <router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link>
-        <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link>
-        <button v-on:click="destroyEntry()">Delete Entry</button>
+        <div v-if="entry.user_id == $parent.getUserId()">
+          <router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link>
+          <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link>
+          <button v-on:click="destroyEntry()">Delete Entry</button>
+        </div>
+        <header id="header">
+          <p><router-link v-bind:to="`/entries`" tag="button">Back</router-link></p>
+        </header>
       </section>
     </header>
     <!-- </div> -->
@@ -53,6 +58,7 @@ export default {
   created: function () {
     this.entriesIndex();
     this.observedBodies();
+    this.getUserId();
   },
   methods: {
     entriesIndex: function () {
@@ -79,6 +85,9 @@ export default {
         console.log(response.data);
         this.observed_bodies = response.data;
       });
+    },
+    getUserId: function () {
+      console.log(localStorage.getItem("user_id"));
     },
   },
 };

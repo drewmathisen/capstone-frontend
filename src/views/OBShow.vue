@@ -1,5 +1,6 @@
 <template>
   <div class="obindex">
+    <header id="header">
     <section id="intro" class="main">
       <div class="spotlight">
         <div class="content">
@@ -20,6 +21,7 @@
         </div>
       </div>
     </section>
+    </header>
   </div>
 </template>
 

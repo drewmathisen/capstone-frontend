@@ -1,22 +1,24 @@
 <template>
-  <div class="spotlight">
-    <form v-on:submit.prevent="submit()">
-      <h1>Login</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
-      <div>
-        <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
-      </div>
-      <hr />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
+  <header id="header">
+    <div class="login">
+      <form v-on:submit.prevent="submit()">
+        <h1>Login</h1>
+        <ul>
+          <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+        </ul>
+        <div>
+          <label>Email:</label>
+          <input type="email" v-model="newSessionParams.email" />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" v-model="newSessionParams.password" />
+        </div>
+        <hr />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -36,6 +38,7 @@ export default {
         .then((response) => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
           this.$router.push("/entries");
         })
         .catch((error) => {
