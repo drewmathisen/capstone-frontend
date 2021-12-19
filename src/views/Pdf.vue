@@ -79,11 +79,22 @@ export default {
     download() {
       let pdfName = "test";
       var doc = new jsPDF();
-      doc.setFontSize(25);
+
+      doc.setFontSize(20);
       doc.text("Title: " + this.entry.title, 107.95, 20, "center");
 
-      doc.setFontSize(15);
-      doc.text("Start time: " + this.entry.start_time, 107.95, 30, "center");
+      doc.setFontSize(10);
+      doc.text("Start time: " + this.entry.start_time, 20, 30, "left");
+      doc.text("End time: " + this.entry.end_time, 20, 40, "left");
+      doc.text("Date: " + this.entry.date, 20, 50, "left");
+      doc.text("Location: " + this.entry.location, 20, 60, "left");
+      doc.text("Seeing Conditions: " + this.entry.seeing_conditions, 20, 70, "left");
+
+      doc.text("Right Ascention: " + this.entry.right_ascention, 107.95, 30, "left");
+      doc.text("Declination: " + this.entry.declination, 107.95, 40, "left");
+      doc.text("Telescope Type: " + this.entry.telescope_type, 107.95, 50, "left");
+      doc.text("Magnification: " + this.entry.magnification, 107.95, 60, "left");
+      doc.text("Filters: " + this.entry.filters, 107.95, 70, "left");
 
       doc.save(pdfName + ".pdf");
     },
