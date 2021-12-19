@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div>
     <header id="header">
       <section id="content" class="main">
         <h1>{{ entry.title }}</h1>
@@ -46,30 +46,27 @@
           </div>
         </div>
         <hr />
-        <div v-if="entry.user_id == $parent.getUserId()">
-          <router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link>
-          <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link>
-          <button v-on:click="destroyEntry()">Delete Entry</button>
-        </div>
+
+        <button class="btn btn-primary pl-5 pr-5" @click="download">Download PDF</button>
+
         <header id="header">
           <p><router-link v-bind:to="`/entries`" tag="button">Back</router-link></p>
         </header>
       </section>
     </header>
-    <!-- </div> -->
+    <h3>title</h3>
   </div>
 </template>
 
-<style></style>
-
 <script>
+import jsPDF from "jspdf";
 import axios from "axios";
-import VueHtml2pdf from "vue-html2pdf";
 
 export default {
-  data: function () {
+  name: "home",
+  data() {
     return {
-      message: "All Entries!",
+      name: "HELLO",
       entry: [],
       observed_bodies: {},
     };
@@ -77,11 +74,18 @@ export default {
   created: function () {
     this.entriesIndex();
     this.observedBodies();
-    this.getUserId();
   },
   methods: {
-    generateReport() {
-      this.$refs.html2Pdf.generatePdf();
+    download() {
+      let pdfName = "test";
+      var doc = new jsPDF();
+      doc.setFontSize(25);
+      doc.text("Title: " + this.entry.title, 107.95, 20, "center");
+
+      doc.setFontSize(15);
+      doc.text("Start time: " + this.entry.start_time, 107.95, 30, "center");
+
+      doc.save(pdfName + ".pdf");
     },
     entriesIndex: function () {
       console.log("in show");
@@ -92,13 +96,6 @@ export default {
         this.entry = response.data;
       });
     },
-    destroyEntry: function () {
-      console.log("in destroy");
-      axios.delete(`/entries/${this.$route.params.id}`).then((response) => {
-        console.log(response.data);
-        this.$router.push("/entries");
-      });
-    },
     observedBodies: function () {
       console.log("in observed_bodies");
       axios.get("/observed_bodies/" + this.$route.params.id).then((response) => {
@@ -107,9 +104,6 @@ export default {
         console.log(response.data);
         this.observed_bodies = response.data;
       });
-    },
-    getUserId: function () {
-      console.log(localStorage.getItem("user_id"));
     },
   },
 };

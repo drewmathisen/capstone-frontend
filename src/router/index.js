@@ -13,6 +13,7 @@ import OBShow from "../views/OBShow.vue";
 import ImagesNew from "../views/ImagesNew.vue";
 import ImagesShow from "../views/ImagesShow.vue";
 import ImagesEdit from "../views/ImagesEdit.vue";
+import Pdf from "../views/Pdf.vue";
 
 Vue.use(VueRouter);
 
@@ -81,6 +82,11 @@ const routes = [
     path: "/images/:id/edit",
     name: "ImagesEdit",
     component: ImagesEdit,
+  },
+  {
+    path: "/pdf/:id",
+    name: "Pdf",
+    component: Pdf,
   },
 ];
 

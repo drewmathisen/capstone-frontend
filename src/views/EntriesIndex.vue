@@ -9,7 +9,7 @@
             <br />
             &bull;
             <div v-for="ob in entry.observed_bodies" style="display: inline-block">
-              {{ ob.name + "&bull;" }}
+              {{ ob.name + " &bull;" }}
             </div>
             <br />
             <b>Start time:</b>
