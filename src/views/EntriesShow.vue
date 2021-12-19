@@ -4,17 +4,36 @@
     <header id="header">
       <section id="content" class="main">
         <h1>{{ entry.title }}</h1>
-        <div v-for="ob in observed_bodies">
-          <h3>{{ ob.name }}</h3>
+        <b>Observed Bodies:</b>
+        <br />
+        &bull;
+        <div v-for="ob in entry.observed_bodies" style="display: inline-block">
+          {{ ob.name + "&bull;" }}
         </div>
-        <p>Start time: {{ entry.start_time }} | End time: {{ entry.end_time }}</p>
-        <p>Entry Location: {{ entry.location }} | Entry Date: {{ entry.date }}</p>
-        <p>Declination: {{ entry.declination }} | Right Ascention: {{ entry.right_ascention }}</p>
-        <p>
-          Telecscope Type: {{ entry.telescope_type }} | Magnification: {{ entry.magnification }} |Filter:
-          {{ entry.filter }}
-        </p>
-        <p>{{ entry.notes }}</p>
+        <br />
+        <b>Start time:</b>
+        {{ entry.start_time }} |
+        <b>End time:</b>
+        {{ entry.end_time }} |
+        <b>Location:</b>
+        {{ entry.location }} |
+        <b>Date:</b>
+        {{ entry.date }}
+        <br />
+        <b>Declination:</b>
+        {{ entry.declination }} |
+        <b>Right Ascention:</b>
+        {{ entry.right_ascention }} |
+        <b>Telecscope Type:</b>
+        {{ entry.telescope_type }} |
+        <b>Magnification:</b>
+        {{ entry.magnification }} |
+        <b>Filter:</b>
+        {{ entry.filter }} |
+        <br />
+        <b>Notes:</b>
+        {{ entry.notes }}
+        <br />
         <div class="row gtr-uniform">
           <div v-for="image in entry.images">
             <div class="thumb1">

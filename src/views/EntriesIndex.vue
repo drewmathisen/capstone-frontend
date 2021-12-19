@@ -1,18 +1,31 @@
 <template>
   <div class="entriesIndex">
-		<header id="header">
+    <header id="header">
       <div id="wrapper">
         <div class="content">
           <div v-for="entry in entries">
-            <p><h1>{{ entry.title }}</h1></p>
-            <div v-for="ob in entry.observed_bodies">
-              <h3>{{ ob.name }}</h3>
+            <h1>{{ entry.title }}</h1>
+            <b>Observed Bodies:</b>
+            <br />
+            &bull;
+            <div v-for="ob in entry.observed_bodies" style="display: inline-block">
+              {{ ob.name + "&bull;" }}
             </div>
-            <p>Start time: {{ entry.start_time }} | End time: {{entry.end_time }}</p>
-            <p>Location: {{ entry.location }} | Date: {{entry.date}} </p>
-            <p>{{ entry.notes }}</p>
+            <br />
+            <b>Start time:</b>
+            {{ entry.start_time }} |
+            <b>End time:</b>
+            {{ entry.end_time }} |
+            <b>Location:</b>
+            {{ entry.location }} |
+            <b>Date:</b>
+            {{ entry.date }}
+            <br />
+            <b>Notes:</b>
+            {{ entry.notes }}
+            <br />
             <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
-            <hr>
+            <hr />
           </div>
         </div>
       </div>
@@ -45,7 +58,7 @@ export default {
         console.log(response.data);
         this.entries = response.data;
       });
-    }
-  }
+    },
+  },
 };
 </script>
