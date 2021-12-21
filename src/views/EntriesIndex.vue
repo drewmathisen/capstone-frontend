@@ -23,6 +23,18 @@
             <br />
             <b>Notes:</b>
             {{ entry.notes }}
+            <div class="row gtr-uniform">
+              <div v-for="image in entry.images">
+                <div class="thumb1">
+                  <div class="col-12">
+                    <router-link v-bind:to="`/images/${image.id}`">
+                      <span class="image fit"><img v-bind:src="image.image_url" alt="image.description" /></span>
+                    </router-link>
+                  </div>
+                  <p>{{ image.name }}</p>
+                </div>
+              </div>
+            </div>
             <br />
             <router-link v-bind:to="`/entries/${entry.id}`" tag="button">Full Entry</router-link>
             <hr />
