@@ -57,7 +57,7 @@
       <br />
       <div>
         <!-- <input type="text" v-model="newEntryParams.telescope_type" /> -->
-        <label>Right Ascention:</label>
+        <label>Right Ascension:</label>
         <input type="text" v-model="newEntryParams.right_ascention" />
         <br />
         <label>Declination:</label>

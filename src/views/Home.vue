@@ -36,7 +36,7 @@
 
 
         </div>
-        <span class="image"><img src="images/pic01.jpg" alt="" /></span>
+ 
  
     </section>
           </header>

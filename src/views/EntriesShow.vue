@@ -21,7 +21,7 @@
         <br />
         <b>Declination:</b>
         {{ entry.declination }} |
-        <b>Right Ascention:</b>
+        <b>Right Ascension:</b>
         {{ entry.right_ascention }} |
         <b>Telecscope Type:</b>
         {{ entry.telescope_type }} |

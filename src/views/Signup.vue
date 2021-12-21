@@ -1,5 +1,6 @@
 <template>
-  <div class="spotlight">
+  <div>
+    <header id="header"
     <form v-on:submit.prevent="submit()">
       <h1>Signup</h1>
       <ul>
@@ -27,6 +28,7 @@
       </div>
       <input type="submit" value="Submit" />
     </form>
+    </header>
   </div>
 </template>
 
