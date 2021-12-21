@@ -3,6 +3,11 @@
     <header id="header">
       <section id="content" class="main">
         <h1>{{ entry.title }}</h1>
+        <b>Name:</b>
+        {{ name }} |
+        <b>Organization:</b>
+        {{ organization }}
+        <br />
         <b>Observed Bodies:</b>
         <br />
         &bull;
@@ -31,22 +36,23 @@
         {{ entry.filter }} |
         <br />
         <b>Notes:</b>
-        {{ entry.notes }}
         <br />
-        <div class="row gtr-uniform">
-          <div v-for="image in entry.images">
-            <div class="thumb1">
-              <div class="col-12">
-                <router-link v-bind:to="`/images/${image.id}`">
-                  <span class="image fit"><img v-bind:src="image.image_url" alt="image.description" /></span>
-                </router-link>
-              </div>
-              <p>{{ image.name }}</p>
+        <hr />
+        <div>
+          <form v-on:submit.prevent="submit()">
+            <div>
+              <label>Name:</label>
+              <input type="text" v-model="name" />
             </div>
-          </div>
+            <br />
+            <div>
+              <label>Organization:</label>
+              <input type="text" v-model="organization" />
+            </div>
+            <br />
+          </form>
         </div>
         <hr />
-
         <button class="btn btn-primary pl-5 pr-5" @click="download">Download PDF</button>
 
         <header id="header">
@@ -54,7 +60,6 @@
         </header>
       </section>
     </header>
-    <h3>title</h3>
   </div>
 </template>
 
@@ -69,6 +74,10 @@ export default {
       name: "HELLO",
       entry: [],
       observed_bodies: {},
+      image_url: "",
+      name: "",
+      organization: "",
+      bodies: [],
     };
   },
   created: function () {
@@ -79,29 +88,35 @@ export default {
     download() {
       let pdfName = "test";
       var doc = new jsPDF();
-      var loremipsum =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eros turpis. Vivamus tempor urna vitae sapien mollis molestie. Vestibulum in lectus non enim bibendum laoreet at at libero. Etiam malesuada erat sed sem blandit in varius orci porttitor. Sed at sapien urna. Fusce augue ipsum, molestie et adipiscing at, varius quis enim. Morbi sed magna est, vel vestibulum urna. Sed tempor ipsum vel mi pretium at elementum urna tempor. Nulla faucibus consectetur felis, elementum venenatis mi mollis gravida. Aliquam mi ante, accumsan eu tempus vitae, viverra quis justo.\n\nProin feugiat augue in augue rhoncus eu cursus tellus laoreet. Pellentesque eu sapien at diam porttitor venenatis nec vitae velit. Donec ultrices volutpat lectus eget vehicula. Nam eu erat mi, in pulvinar eros. Mauris viverra porta orci, et vehicula lectus sagittis id. Nullam at magna vitae nunc fringilla posuere. Duis volutpat malesuada ornare. Nulla in eros metus. Vivamus a posuere libero.";
-
-      doc.setFontSize(20);
-      doc.text("Title: " + this.entry.title, 107.95, 20, "center");
+      var notes = "Notes: " + this.entry.notes;
+      var bnotes = "Notes: " + this.bodies;
 
       doc.setFontSize(10);
-      doc.text("Start time: " + this.entry.start_time, 20, 30, "left");
-      doc.text("End time: " + this.entry.end_time, 20, 35, "left");
-      doc.text("Date: " + this.entry.date, 20, 40, "left");
-      doc.text("Location: " + this.entry.location, 20, 45, "left");
-      doc.text("Seeing Conditions: " + this.entry.seeing_conditions, 20, 50, "left");
+      doc.text("Name: " + this.name, 20, 10, "left");
+      doc.text("Organization: " + this.organization, 20, 15, "left");
 
-      doc.text("Right Ascention: " + this.entry.right_ascention, 107.95, 30, "left");
-      doc.text("Declination: " + this.entry.declination, 107.95, 35, "left");
-      doc.text("Telescope Type: " + this.entry.telescope_type, 107.95, 40, "left");
-      doc.text("Magnification: " + this.entry.magnification, 107.95, 45, "left");
-      doc.text("Filters: " + this.entry.filters, 107.95, 50, "left");
+      doc.setFontSize(20);
+      doc.text("Title: " + this.entry.title, 107.95, 30, "center");
 
-      doc.text("Notes: " + this.entry.notes, 20, 60, "left");
-      var lines = doc.splitTextToSize(loremipsum, 215.9 - 20 - 20);
-      doc.text(20, 20, lines);
+      doc.setFontSize(10);
+      doc.text("Start time: " + this.entry.start_time, 20, 40, "left");
+      doc.text("End time: " + this.entry.end_time, 20, 45, "left");
+      doc.text("Date: " + this.entry.date, 20, 50, "left");
+      doc.text("Location: " + this.entry.location, 20, 55, "left");
+      doc.text("Seeing Conditions: " + this.entry.seeing_conditions, 20, 60, "left");
 
+      doc.text("Right Ascention: " + this.entry.right_ascention, 107.95, 40, "left");
+      doc.text("Declination: " + this.entry.declination, 107.95, 45, "left");
+      doc.text("Telescope Type: " + this.entry.telescope_type, 107.95, 50, "left");
+      doc.text("Magnification: " + this.entry.magnification, 107.95, 55, "left");
+      doc.text("Filters: " + this.entry.filters, 107.95, 60, "left");
+
+      var blines = doc.splitTextToSize(bnotes, 215.9 - 20 - 20);
+      doc.text(20, 70, blines);
+
+      // doc.text("Notes: " + this.entry.notes, 20, 60, "left");
+      var lines = doc.splitTextToSize(notes, 215.9 - 20 - 20);
+      doc.text(20, 90, lines);
       doc.save(pdfName + ".pdf");
     },
     entriesIndex: function () {
@@ -120,7 +135,19 @@ export default {
         // localStorage.setItem("jwt", response.data.jwt);
         console.log(response.data);
         this.observed_bodies = response.data;
+        console.log(this.entry);
+
+        const ob_bodies = [];
+        this.observed_bodies.forEach(function (body) {
+          ob_bodies.push(body.name);
+        });
+        this.bodies = ob_bodies;
+        console.log(this.bodies);
       });
+    },
+    submit: function () {
+      console.log(this.name);
+      console.log(this.organization);
     },
   },
 };

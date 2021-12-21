@@ -49,6 +49,7 @@
         <div v-if="entry.user_id == $parent.getUserId()">
           <router-link v-bind:to="`/entries/${entry.id}/edit`" tag="button">Edit Entry</router-link>
           <router-link v-bind:to="`/images/new/${entry.id}`" tag="button">Add Image</router-link>
+          <router-link v-bind:to="`/pdf/${entry.id}`" tag="button">Generate PDF</router-link>
           <button v-on:click="destroyEntry()">Delete Entry</button>
         </div>
         <header id="header">
