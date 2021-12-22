@@ -36,6 +36,7 @@
         {{ entry.filter }} |
         <br />
         <b>Notes:</b>
+        {{ entry.notes }}
         <br />
         <hr />
         <div>
@@ -86,10 +87,10 @@ export default {
   },
   methods: {
     download() {
-      let pdfName = "test";
+      let pdfName = "Intrastellar Entry";
       var doc = new jsPDF();
       var notes = "Notes: " + this.entry.notes;
-      var bnotes = "Notes: " + this.bodies;
+      var bnotes = "Observed Bodies: " + this.bodies;
 
       doc.setFontSize(10);
       doc.text("Name: " + this.name, 20, 10, "left");
