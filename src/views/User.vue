@@ -1,5 +1,5 @@
 <template>
-  <div class="entriesIndex">
+  <div class="User">
     <header id="header">
       <div id="wrapper">
         <div class="content">
@@ -65,7 +65,7 @@ export default {
   methods: {
     entriesIndex: function () {
       console.log("in index");
-      axios.get("/entries").then((response) => {
+      axios.get("/user_index/" + this.$route.params.id).then((response) => {
         // axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         // localStorage.setItem("jwt", response.data.jwt);
         console.log(response.data);

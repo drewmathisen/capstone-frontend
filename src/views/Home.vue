@@ -10,6 +10,7 @@
           <p>
             <div v-for="entry in entries">
                 <h1>{{ entry.title }}</h1>
+                <h3>by <router-link v-bind:to="`/user/${entry.user.id}`">{{entry.user.name }}</router-link></h3>
                 <b>Observed Bodies:</b>
                 <br />
                 &bull;

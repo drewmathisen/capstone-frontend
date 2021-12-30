@@ -14,6 +14,7 @@ import ImagesNew from "../views/ImagesNew.vue";
 import ImagesShow from "../views/ImagesShow.vue";
 import ImagesEdit from "../views/ImagesEdit.vue";
 import Pdf from "../views/Pdf.vue";
+import User from "../views/User.vue";
 
 Vue.use(VueRouter);
 
@@ -87,6 +88,11 @@ const routes = [
     path: "/pdf/:id",
     name: "Pdf",
     component: Pdf,
+  },
+  {
+    path: "/user/:id",
+    name: "User",
+    component: User,
   },
 ];
 
